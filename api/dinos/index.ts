@@ -58,3 +58,11 @@ export const likeDino = async (request: any, env: any) => {
 
   return new Response(JSON.stringify(newUserData), { headers: { "Content-Type": "application/json", ...corsHeaders } })
 }
+
+export const likedDinos = async (request: any, env: any) => {
+  const { params } = request
+
+  const currentUserData = (await env.DINOS.get(params.userId, { type: "json" })) as UserData
+
+  return new Response(JSON.stringify(currentUserData), { headers: { "Content-Type": "application/json", ...corsHeaders } })
+}

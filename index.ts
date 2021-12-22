@@ -1,5 +1,5 @@
 import { Router } from 'itty-router'
-import { getRandomDino, likeDino } from './api/dinos'
+import { getRandomDino, likedDinos, likeDino } from './api/dinos'
 
 const router = Router()
 
@@ -14,13 +14,15 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "*",
 }
 
-router.options("*", () => new Response(null, {headers: corsHeaders}))
+router.options("*", () => new Response(null, { headers: corsHeaders }))
 
 router.get("/api/dinos", () => {
   return getRandomDino()
 })
 
-router.post("/api/dinos/:userId", (req: Request, env: any) => {
+router.get("/api/dinos/:userId", (req: Request, env: any) => {
+  return likedDinos(req, env)
+}).post("/api/dinos/:userId", (req: Request, env: any) => {
   return likeDino(req, env)
 })
 
