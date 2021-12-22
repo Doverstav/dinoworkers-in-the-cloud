@@ -1,0 +1,20 @@
+{
+  "name": "dinoworkers-in-the-cloud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "volta": {
+    "node": "16.13.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^3.3.0"
+  },
+  "dependencies": {
+    "itty-router": "^2.4.8"
+  }
+}

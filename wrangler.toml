@@ -1,0 +1,8 @@
+compatibility_date = "2021-12-21"
+  
+name = "dinoworkers-in-the-cloud"
+
+[[kv_namespaces]]
+binding = "DINOS"
+preview_id = "e2d59120dff944eb89af170fa48e21af"
+id = "e2d59120dff944eb89af170fa48e21af"
