@@ -5,8 +5,9 @@ export enum Dinos {
   Triceratops = "Triceratops",
 }
 
-export interface dinoResponse {
-  dino: Dinos
+interface ExternalDinoResponse {
+  Name: string,
+  Description: string
 }
 
 interface UserData {
@@ -25,13 +26,11 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "*",
 }
 
-export const getRandomDino = () => {
-  const dinos = ["Velociraptor", "Stegosaurus", "Tyrannosaurus Rex", "Triceratops"]
-  const response = {
-    dino: dinos[Math.round(Math.random() * dinos.length)]
-  }
+export const getRandomDino = async () => {
+  const externalDinoResponse = await fetch(`https://dinosaur-facts-api.shultzlab.com/dinosaurs/random`)
+  const externalDinoJson = await externalDinoResponse.json() as ExternalDinoResponse
 
-  return new Response(JSON.stringify(response), { headers: { "Content-Type": "application/json", ...corsHeaders } })
+  return new Response(JSON.stringify(externalDinoJson), { headers: { "Content-Type": "application/json", ...corsHeaders } })
 }
 
 export const likeDino = async (request: any, env: any) => {
